@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman Colors reworked</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/hang.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="index.html" class="brand-logo" style="margin-left: 20px;">Hangman Colors</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse waves-effect"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li class="active"><a href="sass.html">Home</a></li>
+                    <li><a href="#">New Game</a></li>
+                    <li><a href="#">Restart</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="badges.html">New Game</a></li>
+                    <li><a href="collapsible.html">Restart</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <br>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col s2">
+
+            </div>
+            <div class="col s8 center">
+                <h3 id="displayArea">Dash Display Area</h3>
+
+            </div>
+            <div class="col s2">
+
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col s2">
+
+            </div>
+            <div class="col s8">
+                <div id="letterChoices" style="display:flex;flex-wrap:wrap;flex:1;">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s2">
+
+            </div>
+            <div class="col s6">
+                <h5>Letters Guessed: <p><span id="lettersGuessed"></span></p></h5>
+            </div>
+            <div class="col s2">
+                <h5>Lives: <span id="livesArea">10</span></h5>
+            </div>
+            <div class="col s2">
+
+            </div>
+        </div>
+    </div>
+</main>
+
+
+</body>
+
+</html>
