@@ -14,7 +14,7 @@ $(document).ready(function(){
   dashReplace(chooseAWord());
 
 
-$(".choice-btn").on("click", function(){
+$(document).on("click", ".choice-btn", function(){
   console.log($(this).data("letter"));
   var dataChoice = $(this).data("letter");
   $("#lettersGuessed").append(dataChoice+"   ");
@@ -25,6 +25,10 @@ $(".choice-btn").on("click", function(){
 
 });
 
+$("#restartButton").on("click", function(){
+  restartGame();
+});
+
 
 
 }); // end of Document Ready
@@ -33,14 +37,16 @@ var guessTheWord;
 var guessTheWordLength;
 // array containing dashes
 var dashArray;
-var answerArray = [];
+var lettersGuessedArray = [];
 var playerLives = 10;
+var playerWins = 0;
+var playerLosses = 0;
 
 function createButtons() {
     var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
         "T", "U", "V", "W", "X", "Y", "Z", "-"
     ];
-
+    $("#letterChoices").html("");
     for (var i = 0; i < letters.length; i++) {
         var newButton = $("<button>");
         newButton.addClass("light-blue waves-effect waves-light btn choice-btn");
@@ -54,6 +60,7 @@ function createButtons() {
             "max-width": "48px",
             "min-width": "48px"
         });
+
         $("#letterChoices").append(newButton);
 
     }
@@ -92,12 +99,18 @@ function checkLetters(possibleLetter){
     updateLives();
 
   }
+
+  lettersGuessedArray.push(possibleLetter);
+  $("#lettersGuessed").html(lettersGuessedArray);
 }
 
 function checkWin(){
   if((dashArray.indexOf("_ ") === -1) && (playerLives > 0)){
-
+    addWin();
+    $("#letterChoices").html("<h4>YOU WIN!</h4>");
+    $("#letterChoices").append("<h5>Click on the <span class='enhance'>New Game</span> or <span class='enhance'>Restart</span> Buttons to play again</h5>");
     console.log("You Win!");
+
   }
 }
 function updateLives(){
@@ -105,6 +118,7 @@ function updateLives(){
   $("#livesArea").html(playerLives);
   if(checkLoss()){
     // alert("Game Over!");
+    addLoss();
     $("#letterChoices").html("<h4>GAME OVER!</h4>");
     $("#letterChoices").append("<h5>You are out of lives! Click on the <span class='enhance'>New Game</span> or <span class='enhance'>Restart</span> Buttons</h5>");
 
@@ -117,6 +131,28 @@ function checkLoss(){
     return true;
   }
 }
+function addWin(){
+  playerWins++;
+  $("#winsArea").html(playerWins);
+}
+function addLoss(){
+  playerLosses++;
+  $("#lossArea").html(playerLosses);
+}
+
 function restartGame(){
+
+  playerLives = 10;
+  $("#livesArea").html(playerLives);
+  // Create Letter buttons
+  createButtons();
+  // chooseAWord returns a color, dash Replace, replaces the letters with dashes and appends to page
+  dashReplace(chooseAWord());
+  lettersGuessedArray = [];
+  $("#lettersGuessed").html(lettersGuessedArray);
+
+
+
+
 
 }
