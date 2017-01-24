@@ -12,7 +12,9 @@ $(document).ready(function(){
   createButtons();
   // chooseAWord returns a color, dash Replace, replaces the letters with dashes and appends to page
   dashReplace(chooseAWord());
+  // UNCOMMENT THIS IN THE FUTURE 
   // dashReplace(chooseAHero());
+
 
 
 $(document).on("click", ".choice-btn", function(){
