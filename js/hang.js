@@ -12,6 +12,7 @@ $(document).ready(function(){
   createButtons();
   // chooseAWord returns a color, dash Replace, replaces the letters with dashes and appends to page
   dashReplace(chooseAWord());
+  // dashReplace(chooseAHero());
 
 
 $(document).on("click", ".choice-btn", function(){
@@ -66,6 +67,17 @@ function createButtons() {
     }
 }
 
+function chooseAHero(){
+  var heroArray = ["Green Lantern", "The Flash", "Thor", "The Hulk", "Captain America", "Wolverine", "Superman", "Iron Man", "Spider-Man", "Batman"];
+  var randomize = Math.floor(Math.random() * 10);
+  // guessTheWord = heroArray[randomize].toUpperCase().toString();
+  guessTheWord = "Green Lantern";
+  console.log("THE HERO is " + guessTheWord);
+  guessTheWordLength = guessTheWord.length;
+
+  return guessTheWord;
+}
+
 function chooseAWord(){
   var colorChoice = ["red", "orange", "yellow", "green", "blue", "purple", "black", "white"];
   var randomize = Math.floor(Math.random() * 8);
@@ -79,8 +91,13 @@ function chooseAWord(){
 
 function dashReplace(string){
   dashArray = [];
-  for(var i = 0; i < string.length;i++){
-    dashArray.push("_ ");
+  var newArray = string.split(" ");
+
+  for(var i = 0; i < newArray.length;i++){
+    for(var x = 0; x < newArray[i].length;x++){
+      dashArray.push("_ ");
+    }
+
   }
   $("#displayArea").html(dashArray);
 }
